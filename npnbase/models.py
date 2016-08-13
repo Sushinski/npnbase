@@ -5,6 +5,9 @@ class GroupRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
     group_name = models.TextField(verbose_name='group_name')
 
+    class Meta:
+        db_table = 'GroupRecord'
+
 
 class NameRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
@@ -13,11 +16,17 @@ class NameRecord(models.Model):
     selected = models.IntegerField(verbose_name='selected', default=0)
     description = models.TextField(verbose_name='description')
 
+    class Meta:
+        db_table = 'NameRecord'
+
 
 class NameGroupRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
     group_id = models.ForeignKey(GroupRecord, on_delete=models.CASCADE)
     name_id = models.ForeignKey(NameRecord, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'NameGroupRecord'
 
 
 class ZodiacRecord(models.Model):
@@ -25,8 +34,14 @@ class ZodiacRecord(models.Model):
     zod_month = models.PositiveSmallIntegerField(unique=True, verbose_name='zod_month')
     zod_sign = models.TextField(unique=True, verbose_name='zod_sign')
 
+    class Meta:
+        db_table = 'ZodiacRecord'
+
 
 class NameZodiacRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
     name_id = models.ForeignKey(NameRecord, on_delete=models.CASCADE)
     zodiac_id = models.ForeignKey(ZodiacRecord, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'NameZodiacRecord'
