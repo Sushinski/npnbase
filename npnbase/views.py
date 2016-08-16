@@ -1,37 +1,30 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
-from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.response import Response
 from npnbase.models import NameRecord
 from npnbase.serializers import NameSerializer
 
 
-class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
 
-
+@api_view(['GET', 'POST'])
 @csrf_exempt
 def names_list(request):
     if request.method == 'GET':
         snippets = NameRecord.objects.all()
         serializer = NameSerializer(snippets, many=True)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
 
     elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = NameSerializer(data=data)
+        serializer = NameSerializer(request.data)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse(serializer.data, status=201)
-        return JSONResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
 @csrf_exempt
 def names_detail(request, pk):
     try:
@@ -40,6 +33,6 @@ def names_detail(request, pk):
         return HttpResponse(status=404)
     if request.method == 'GET':
         serializer = NameSerializer(name)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
     return HttpResponse(status=404)
 

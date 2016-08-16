@@ -2,25 +2,28 @@ from rest_framework import serializers
 from npnbase.models import NameRecord, NameGroupRecord, GroupRecord, ZodiacRecord, NameZodiacRecord
 
 
-class NameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NameRecord
-        fields = ('_id', 'name', 'sex', 'description')
-
-
-class NameGroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NameGroupRecord
-        fields = ('name_id__name', 'group_id__name')
-
-
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = GroupRecord
-        fields = ('_id', 'group_name')
+        fields = ('group_name',)
 
 
-class NameZodiacSerializer(serializers.ModelSerializer):
+class ZodiacSerializer(serializers.ModelSerializer):
     class Meta:
-        model = NameZodiacRecord
-        fields = ('name_id__name', 'zodiac_id__zod_month')
+        model = ZodiacRecord
+        fields = ('zod_month',)
+
+
+class NameSerializer(serializers.ModelSerializer):
+    groups = GroupSerializer(source='get_groups', read_only=True, many=True)
+    zodiacs = ZodiacSerializer(source='get_zodiacs', read_only=True, many=True)
+
+    class Meta:
+        model = NameRecord
+        fields = ('_id', 'name', 'sex', 'description', 'groups', 'zodiacs')
+
+
+
+
+
+

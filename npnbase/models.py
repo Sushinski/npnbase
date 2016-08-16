@@ -16,6 +16,14 @@ class NameRecord(models.Model):
     selected = models.IntegerField(verbose_name='selected', default=0)
     description = models.TextField(verbose_name='description')
 
+    def get_groups(self):
+        groups_ids = NameGroupRecord.objects.filter(name_id=self)
+        return GroupRecord.objects.filter(_id__in=groups_ids)
+
+    def get_zodiacs(self):
+        zodiac_ids = NameZodiacRecord.objects.filter(name_id=self)
+        return ZodiacRecord.objects.filter(_id__in=zodiac_ids)
+
     class Meta:
         db_table = 'NameRecord'
 
