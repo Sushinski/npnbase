@@ -3,13 +3,12 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
-from npnbase.models import NameRecord
+from npnbase.models import NameRecord, NameZodiacRecord, NameGroupRecord
 from npnbase.serializers import NameSerializer
 
 
 
 @api_view(['GET', 'POST'])
-@csrf_exempt
 def names_list(request):
     if request.method == 'GET':
         snippets = NameRecord.objects.all()
@@ -25,10 +24,19 @@ def names_list(request):
 
 
 @api_view(['GET'])
-@csrf_exempt
-def names_detail(request, pk):
+def names_detail(request, month, sex, group):
     try:
-        name = NameRecord.objects.get(pk=pk)
+        name = NameRecord.objects.all()
+        if month != 0:
+            ids = NameZodiacRecord.objects.filter(zodiac_id__zod_month=month).values_list("name_id", flat=True)
+            name = name.filter(_id__in=ids)
+        if sex != 2:
+            name = name.filter(sex=sex)
+        if group != "all":
+            gr_ids = NameGroupRecord.objects.filter(group_id__group_name=group).values_list("name_id", flat=True)
+            name = name.filter(_id__in=gr_ids)
+            serializer = NameSerializer(name, many=True)
+            return Response(serializer.data)
     except NameRecord.DoesNotExist:
         return HttpResponse(status=404)
     if request.method == 'GET':
