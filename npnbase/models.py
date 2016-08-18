@@ -3,7 +3,7 @@ from django.db import models
 
 class GroupRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
-    group_name = models.TextField(verbose_name='group_name')
+    group_name = models.TextField(verbose_name='group_name', max_length=50)
 
     class Meta:
         db_table = 'GroupRecord'
@@ -11,7 +11,7 @@ class GroupRecord(models.Model):
 
 class NameRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
-    name = models.TextField(verbose_name='name', unique=True)
+    name = models.TextField(verbose_name='name', unique=True, max_length=64)
     sex = models.PositiveIntegerField(verbose_name='sex')
     selected = models.IntegerField(verbose_name='selected', default=0)
     description = models.TextField(verbose_name='description')
