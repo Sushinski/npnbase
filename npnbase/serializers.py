@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from npnbase.models import NameRecord, NameGroupRecord, GroupRecord, ZodiacRecord, NameZodiacRecord
+from npnbase.models import NameRecord, GroupRecord, ZodiacRecord
 
 
 class GroupSerializer(serializers.ModelSerializer):
