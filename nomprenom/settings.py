@@ -78,8 +78,8 @@ TEMPLATES = [
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portal_db',
-        'TEST_NAME': 'test_portal_db',
+        'NAME': 'npnbase_db',
+        'TEST_NAME': 'test_npnbase_db',
         'USER': 'npnadmin',
         'PASSWORD': '2meski4n1234',
         'HOST': '127.0.0.1',
