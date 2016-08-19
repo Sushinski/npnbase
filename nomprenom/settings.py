@@ -69,8 +69,13 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'nomprenom.wsgi.application'
+WSGI_APPLICATION = 'nomprenom.wsgi.application'
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -79,7 +84,6 @@ DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'npnbase_db',
-        'TEST_NAME': 'test_npnbase_db',
         'USER': 'npnadmin',
         'PASSWORD': '2meski4n1234',
         'HOST': '127.0.0.1',

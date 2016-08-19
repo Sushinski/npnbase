@@ -40,7 +40,7 @@ class NameGroupRecord(models.Model):
 class ZodiacRecord(models.Model):
     _id = models.PositiveIntegerField(primary_key=True)
     zod_month = models.PositiveSmallIntegerField(unique=True, verbose_name='zod_month')
-    zod_sign = models.TextField(unique=True, verbose_name='zod_sign')
+    zod_sign = models.CharField(unique=True, verbose_name='zod_sign', max_length=64)
 
     class Meta:
         db_table = 'ZodiacRecord'
