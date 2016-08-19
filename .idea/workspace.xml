@@ -94,8 +94,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nomprenom/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54202896">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3942029">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -555,7 +555,13 @@
       <option name="project" value="LOCAL" />
       <updated>1471618886728</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="debug = true">
+      <created>1471620423160</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1471620423160</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -609,7 +615,8 @@
     <MESSAGE value="comment addsitedir" />
     <MESSAGE value="editing paths" />
     <MESSAGE value="restoring paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="restoring paths" />
+    <MESSAGE value="debug = true" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug = true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -836,8 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nomprenom/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54202896">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3942029">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>
