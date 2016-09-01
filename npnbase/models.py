@@ -18,11 +18,11 @@ class NameRecord(models.Model):
 
     def get_groups(self):
         groups_ids = NameGroupRecord.objects.filter(name_id=self)
-        return GroupRecord.objects.filter(_id__in=groups_ids.values_list("group_id", flat=True))
+        return GroupRecord.objects.filter(_id__in=groups_ids.values_list('group_id', flat=True)).values_list('group_name', flat=True)
 
     def get_zodiacs(self):
         zodiac_ids = NameZodiacRecord.objects.filter(name_id=self)
-        return ZodiacRecord.objects.filter(_id__in=zodiac_ids.values_list('zodiac_id', flat=True))
+        return ZodiacRecord.objects.filter(_id__in=zodiac_ids.values_list('zodiac_id', flat=True)).values_list('zod_month', flat=True)
 
     class Meta:
         db_table = 'NameRecord'
