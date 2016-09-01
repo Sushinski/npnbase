@@ -11,7 +11,7 @@ class GroupSerializer(serializers.ModelSerializer):
 class ZodiacSerializer(serializers.ModelSerializer):
     class Meta:
         model = ZodiacRecord
-        fields = ('zod_month',)
+        fields = ('zod_sign',)
 
 
 class NameSerializer(serializers.ModelSerializer):
