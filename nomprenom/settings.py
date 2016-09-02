@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4=i2vnr^euf(13$%e^&_e7*8ycmiygw*v0_^@_raaxrs8i049n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,18 +81,18 @@ LOGGING = {
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'npnbase_db',
-        'USER': 'npnadmin',
-        'PASSWORD': '2meski4n1234',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
+        # 'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'npnbase_db',
+        # 'USER': 'npnadmin',
+        # 'PASSWORD': '2meski4n1234',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '3306',
+        # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 

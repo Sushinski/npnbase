@@ -15,8 +15,6 @@ class ZodiacSerializer(serializers.ModelSerializer):
 
 
 class NameSerializer(serializers.ModelSerializer):
-    groups = GroupSerializer(source='get_groups', read_only=True, many=True)
-    zodiacs = ZodiacSerializer(source='get_zodiacs', read_only=True, many=True)
 
     class Meta:
         model = NameRecord
