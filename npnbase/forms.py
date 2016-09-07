@@ -7,3 +7,4 @@ class NameForm(forms.ModelForm):
         model = NameRecord
         fields = ('name', 'sex', 'description', 'groups', 'zodiacs')
 
+
