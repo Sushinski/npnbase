@@ -1,5 +1,5 @@
 from django import forms
-from models import NameRecord
+from npnbase.models import NameRecord
 
 
 class NameForm(forms.ModelForm):
