@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from npnbase.models import NameRecord
 from npnbase.serializers import NameSerializer
-from forms import NameForm
+from npnbase.forms import NameForm
 
 
 @api_view(['GET', 'POST'])
