@@ -25,6 +25,7 @@ class ZodiacRecord(models.Model):
 
 
 class NameZodiacRecord(models.Model):
+    _id = models.AutoField(primary_key=True)
     name_id = models.ForeignKey('NameRecord', on_delete=models.CASCADE)
     zodiac_id = models.ForeignKey(ZodiacRecord, on_delete=models.CASCADE)
 
