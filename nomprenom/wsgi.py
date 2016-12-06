@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../"
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 activate_env = os.path.expanduser("/home/sushinski/virtualenvs/npn/npnenv/bin/activate_this.py")
-#exec(open(activate_env).read())
+exec(open(activate_env).read())
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nomprenom.settings")
 
