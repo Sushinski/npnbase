@@ -2,7 +2,8 @@
 import os
 import sys
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nomprenom.settings")
+os.environ['DJANGO_SETTINGS_MODULE'] = "nomprenom.settings"
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__) + "/nomprenom")))
 
 if __name__ == "__main__":
     try:

@@ -39,10 +39,10 @@ class NameRecord(models.Model):
     )
     _id = models.AutoField(primary_key=True)
     name = models.CharField(verbose_name='name', unique=True, max_length=64)
-    sex = models.PositiveIntegerField(verbose_name='sex', choices=GENDER_CHOICE, default=1)
     selected = models.IntegerField(verbose_name='selected', default=0)
-    description = models.TextField(verbose_name='description')
+    description = models.TextField(verbose_name='description', null=True)
     groups = models.ForeignKey(GroupRecord, blank=True, null=True, on_delete=models.SET_NULL)
+    sex = models.PositiveIntegerField(verbose_name='sex', choices=GENDER_CHOICE, default=1)
     zodiacs = models.ManyToManyField(ZodiacRecord, through=NameZodiacRecord, through_fields=('name_id', 'zodiac_id'))
 
     class Meta:
