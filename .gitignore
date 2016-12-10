@@ -1,2 +1,6 @@
 __pycache__/
 .idea/
+static/
+npnbase/migrations/
+npnenv/
+*.pyc

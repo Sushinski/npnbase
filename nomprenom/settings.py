@@ -85,7 +85,7 @@ DATABASES = {
          'NAME': 'npnbase_db',
          'USER': 'npnadmin',
          'PASSWORD': '2meski4n1234',
-         'HOST': '127.0.0.1',
+         'HOST': '85.143.215.126',
          'PORT': '3306',
          }
 #    'default': {
