@@ -23,7 +23,7 @@ class ZodiacRecord(models.Model):
     def __str__(self):
         return str(self.zod_sign)
     
-     def __unicode__(self):
+    def __unicode__(self):
         return u'%s' % self.zod_sign
 
     class Meta:
