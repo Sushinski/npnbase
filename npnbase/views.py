@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
-from npnbase.models import NameRecord
+from npnbase.models import NameRecord, PrefRecord
 from npnbase.serializers import NameSerializer
 from npnbase.forms import NameForm
 
@@ -40,6 +40,16 @@ def names_detail(request, month, sex, group):
         return HttpResponse(status=404)
 
 
+@api_view(['GET'])
+def names_update(request, client_ver):
+    try:
+        new_names = NameRecord.objects.filter(_id__gt=client_ver)
+        serializer = NameSerializer(new_names, many=True)
+        return Response(serializer.data)
+    except NameRecord.DoesNotExist:
+        return HttpResponse(status=404)
+
+
 def names_new(request):
     if request.method == "POST":
         post_form = NameForm(request.POST)
@@ -56,3 +66,7 @@ def names_new(request):
                 new_name.save()
     form = NameForm()
     return render(request, 'npnbase/base.html', {'form': form})
+
+                                                                                   
+        
+        

@@ -56,5 +56,12 @@ class NameRecord(models.Model):
         db_table = 'NameRecord'
 
 
+class PrefRecord(models.Model):
+    _id = models.AutoField(primary_key=True)
+    name = models.CharField(verbose_name='name', unique=True, null=False, max_length=64)
+    value = models.CharField(verbose_name='value', null=True, max_length=64)
+    
+    class Meta:
+        db_table = 'PrefRecord'
 
 
