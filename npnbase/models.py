@@ -3,13 +3,7 @@ from django.db import models
 
 class GroupRecord(models.Model):
     _id = models.AutoField(primary_key=True)
-    group_name = models.CharField(verbose_name='group_name', max_length=50)
-
-    def __str__(self):
-        return str(self.group_name)
-    
-    def __unicode__(self):
-        return u'%s' % self.group_name
+    group_name = models.TextField(verbose_name='group_name', unique=True)
 
     class Meta:
         db_table = 'GroupRecord'
@@ -18,11 +12,11 @@ class GroupRecord(models.Model):
 class ZodiacRecord(models.Model):
     _id = models.AutoField(primary_key=True)
     zod_month = models.PositiveSmallIntegerField(unique=True, verbose_name='zod_month')
-    zod_sign = models.CharField(unique=True, verbose_name='zod_sign', max_length=64)
+    zod_sign = models.TextField(unique=True, verbose_name='zod_sign')
 
     def __str__(self):
         return str(self.zod_sign)
-    
+
     def __unicode__(self):
         return u'%s' % self.zod_sign
 
@@ -45,7 +39,7 @@ class NameRecord(models.Model):
         (0, 'Girl')
     )
     _id = models.AutoField(primary_key=True)
-    name = models.CharField(verbose_name='name', unique=True, max_length=64)
+    name = models.TextField(verbose_name='name', unique=True)
     selected = models.IntegerField(verbose_name='selected', default=0)
     description = models.TextField(verbose_name='description', null=True)
     groups = models.ForeignKey(GroupRecord, blank=True, null=True, on_delete=models.SET_NULL)
