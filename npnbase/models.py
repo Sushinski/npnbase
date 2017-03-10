@@ -10,6 +10,12 @@ class GroupRecord(models.Model):
     def __str__(self):
         return self.group_name
 
+    def __str__(self):
+        return str(self.group_name)
+
+    def __unicode__(self):
+        return u'%s' % self.group_name
+
     class Meta:
         db_table = 'GroupRecord'
 
@@ -40,6 +46,12 @@ class NameRecord(models.Model):
     groups = models.ForeignKey(GroupRecord, blank=True, null=True, on_delete=models.SET_NULL)
     sex = models.PositiveIntegerField(verbose_name='sex', choices=GENDER_CHOICE, default=1)
     zodiacs = models.ManyToManyField(ZodiacRecord, through='NameZodiacRecord', through_fields=('name_id', 'zodiac_id'))
+
+    def __str__(self):
+        return str(self.name)
+
+    def __unicode__(self):
+        return u'%s' % self.name
 
     class Meta:
         db_table = 'NameRecord'
