@@ -16,7 +16,7 @@ class ZodiacSerializer(serializers.ModelSerializer):
 
 class NameSerializer(serializers.ModelSerializer):
     groups = serializers.StringRelatedField(many=False)
-    zodiacs = serializers.StringRelatedField(many=True)
+    zodiacs = serializers.SlugRelatedField(many=True, read_only=True, slug_field='zod_month')
 
     class Meta:
         model = NameRecord
